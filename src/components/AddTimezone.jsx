@@ -24,7 +24,7 @@ export default function AddTimezone() {
 
   function onSubmit(event) {
     event.preventDefault();
-    const nextTimezones = Array.from(new Set([...currentTimezones, selectedTimezone]));
+    const nextTimezones = Array.from(new Set([...currentTimezones, selectedTimezone])).filter(Boolean);
     const nextLocalStorage = {
       timezones: nextTimezones,
     };
