@@ -25,12 +25,15 @@ export default function AddTimezone() {
   function onClick(event) {
     event.preventDefault();
     const nextTimezones = Array.from(new Set([...currentTimezones, selectedTimezone]));
-    setLocalStorage('timezones', nextTimezones);
-    setSelectedTimezone('');
+    const nextLocalStorage = {
+      timezones: nextTimezones,
+    };
     if (nickname) {
-      setLocalStorage('nicknames', { ...currentNicknames, [selectedTimezone]: nickname });
-      setNickname('');
+      nextLocalStorage.nicknames = { ...currentNicknames, [selectedTimezone]: nickname };
     }
+    setLocalStorage(nextLocalStorage);
+    setSelectedTimezone('');
+    setNickname('');
   }
 
   return (

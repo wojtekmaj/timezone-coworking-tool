@@ -10,7 +10,7 @@ export default function Settings() {
 
   function onChange(event) {
     const { value } = event.target;
-    setLocalStorage('myTimezone', value);
+    setLocalStorage({ myTimezone: value });
   }
 
   return (

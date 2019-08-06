@@ -12,10 +12,10 @@ export default function LocalStorageProvider({ children, localStorageKey }) {
 
   useEffect(saveLocalStorage, [localStorageObj]);
 
-  function set(key, value) {
+  function set(amend) {
     const nextLocalStorageObj = {
       ...localStorageObj,
-      [key]: value,
+      ...amend,
     };
     setLocalStorageObj(nextLocalStorageObj);
   }
