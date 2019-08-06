@@ -17,11 +17,7 @@ export default function Timezone({
 }) {
   useTick();
   const [localStorage] = useContext(LocalStorageContext);
-  const { myTimezone, nicknames = {} } = localStorage;
-
-  if (!myTimezone) {
-    return null;
-  }
+  const { nicknames = {} } = localStorage;
 
   const displayLabel = (
     nicknames[tzCode]
