@@ -9,6 +9,20 @@ import { LocalStorageContext } from '../LocalStorageProvider';
 
 import useTick from '../hooks/useTick';
 
+function TimezoneBar({ index, timeStart, timeEnd }) {
+  return (
+    <div
+      className="Timezone__bar"
+      style={{
+        gridRowStart: (index * 2) + 1,
+        gridRowEnd: (index * 2) + 1,
+        gridColumnStart: timeStart + 1,
+        gridColumnEnd: timeEnd + 1,
+      }}
+    />
+  );
+}
+
 export default function Timezone({
   index,
   isCurrent,
@@ -27,8 +41,19 @@ export default function Timezone({
   const localDate = utcToZonedTime(date, tzCode);
   const timeDifference = Math.round((localDate - date) / 3600000);
 
-  const timeStart = 9 - timeDifference;
-  const timeEnd = 17 - timeDifference;
+  const initialTimeStart = 9 - timeDifference;
+  const initialTimeEnd = 17 - timeDifference;
+
+  const bars = [[initialTimeStart, initialTimeEnd]];
+
+  // If bar goes through midnight, we need to actually display two separate bars
+  if (initialTimeStart < 0) {
+    bars[0][0] = 0;
+    bars.push([24 + initialTimeStart, 24]);
+  }
+  if (initialTimeEnd > 24) {
+    bars.push([0, initialTimeEnd - 24]);
+  }
 
   return (
     <div className={mergeClassNames('Timezone', isCurrent && 'Timezone--current')}>
@@ -43,15 +68,13 @@ export default function Timezone({
         {' '}
         <span className="Timezone__label__time">{localDate.toLocaleTimeString(undefined, { hour: 'numeric', minute: 'numeric' })}</span>
       </h3>
-      <div
-        className="Timezone__bar"
-        style={{
-          gridRowStart: (index * 2) + 1,
-          gridRowEnd: (index * 2) + 1,
-          gridColumnStart: timeStart + 1,
-          gridColumnEnd: timeEnd + 1,
-        }}
-      />
+      {bars.map(([timeStart, timeEnd]) => (
+        <TimezoneBar
+          index={index}
+          timeStart={timeStart}
+          timeEnd={timeEnd}
+        />
+      ))}
     </div>
   );
 }
