@@ -9,9 +9,11 @@ import Timezone from './Timezone';
 
 import { LocalStorageContext } from '../LocalStorageProvider';
 
+import { detectTimezone } from '../utils';
+
 export default function TimezoneList() {
   const [localStorage] = useContext(LocalStorageContext);
-  const { myTimezone, timezones: currentTimezones = [] } = localStorage;
+  const { myTimezone = detectTimezone(), timezones: currentTimezones = [] } = localStorage;
 
   const tzToDisplay = Array.from(new Set([myTimezone, ...currentTimezones])).map(
     tzCode => timezones.find(tz => tz.tzCode === tzCode),

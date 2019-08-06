@@ -3,10 +3,11 @@ import React, { useContext } from 'react';
 import TimezoneSelect from './TimezoneSelect';
 
 import { LocalStorageContext } from '../LocalStorageProvider';
+import { detectTimezone } from '../utils';
 
 export default function Settings() {
   const [localStorage, setLocalStorage] = useContext(LocalStorageContext);
-  const { myTimezone } = localStorage;
+  const { myTimezone = detectTimezone() } = localStorage;
 
   function onChange(event) {
     const { value } = event.target;
