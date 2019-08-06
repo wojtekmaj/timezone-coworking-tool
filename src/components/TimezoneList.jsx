@@ -15,7 +15,7 @@ export default function TimezoneList() {
 
   const tzToDisplay = Array.from(new Set([myTimezone, ...currentTimezones])).map(
     tzCode => timezones.find(tz => tz.tzCode === tzCode),
-  );
+  ).filter(Boolean);
   tzToDisplay.sort((a, b) => parseInt(a.offset, 10) - parseInt(b.offset, 10));
 
   return (
