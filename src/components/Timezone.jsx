@@ -15,7 +15,7 @@ export default function Timezone({
   label,
   tzCode,
 }) {
-  useTick();
+  useTick(1000);
   const [localStorage] = useContext(LocalStorageContext);
   const { nicknames = {} } = localStorage;
 

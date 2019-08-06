@@ -5,7 +5,7 @@ import './Hand.less';
 import useTick from '../hooks/useTick';
 
 export default function Hand() {
-  useTick();
+  useTick(1000);
   const date = new Date();
   const hourStart = date.getHours();
   const minuteStart = date.getMinutes();
