@@ -22,7 +22,7 @@ export default function AddTimezone() {
     setNickname(value);
   }
 
-  function onClick(event) {
+  function onSubmit(event) {
     event.preventDefault();
     const nextTimezones = Array.from(new Set([...currentTimezones, selectedTimezone]));
     const nextLocalStorage = {
@@ -39,7 +39,7 @@ export default function AddTimezone() {
   return (
     <div>
       <h2>Add new timezone</h2>
-      <form>
+      <form onSubmit={onSubmit}>
         <label htmlFor="timezone">Select timezone</label>
         <TimezoneSelect
           onChange={onChange}
@@ -56,7 +56,7 @@ export default function AddTimezone() {
           value={nickname}
         />
         <div>
-          <button type="submit" onClick={onClick}>
+          <button type="submit">
             Add timezone
           </button>
         </div>
