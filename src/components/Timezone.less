@@ -1,0 +1,26 @@
+.Timezone {
+  display: contents;
+
+  &--current {
+    .Timezone__bar {
+      background: rgba(128, 128, 128, 0.8);
+    }
+  }
+
+  &__label {
+    grid-column-start: 1;
+    grid-column-end: 25;
+    margin: 0.748em;
+
+    &__time {
+      font-size: 12px;
+      font-weight: normal;
+    }
+  }
+
+  &__bar {
+    min-height: 42px;
+    background: rgba(128, 128, 128, 0.4);
+    border-radius: 5px;
+  }
+}

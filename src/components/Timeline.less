@@ -1,0 +1,50 @@
+.Timeline {
+  display: contents;
+
+  &__hour {
+    display: grid;
+    grid-template-columns: repeat(60, 1fr);
+    grid-row-start: 1;
+    grid-row-end: -1;
+
+    @media screen and (max-width: 920px) {
+      &:nth-child(2n) {
+        .Timeline__hour__hand {
+          opacity: .25;
+
+          &__time {
+            display: none;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 470px) {
+      &:nth-child(4n - 1) {
+        .Timeline__hour__hand {
+          opacity: .25;
+
+          &__time {
+            display: none;
+          }
+        }
+      }
+    }
+
+    &__hand {
+      width: 1px;
+      margin: 17px -.5px 0;
+      position: relative;
+      background-color: rgb(220, 220, 220);
+      z-index: -1;
+
+      &__time {
+        position: absolute;
+        top: 0;
+        padding: 5px;
+        transform: translate(-5px, -100%);
+        color: rgb(150, 150, 150);
+      }
+    }
+  }
+}

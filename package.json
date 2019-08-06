@@ -1,0 +1,40 @@
+{
+  "name": "timezone-coworking-tool",
+  "version": "1.0.0",
+  "description": "A tool to help with coworking with people in different timezones",
+  "main": "src/index.html",
+  "scripts": {
+    "build": "yarn clean && parcel build src/index.html --public-url ./ --cache-dir ./.cache/prod",
+    "clean": "rimraf dist",
+    "test": "yarn run test-eslint",
+    "test-eslint": "eslint src/ --ext .jsx,.js",
+    "start": "parcel src/index.html --cache-dir ./.cache/dev"
+  },
+  "author": {
+    "name": "Wojciech Maj",
+    "email": "kontakt@wojtekmaj.pl"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "compact-timezone-list": "^1.0.6",
+    "date-fns": "2.0.0-beta.4",
+    "date-fns-tz": "^1.0.7",
+    "merge-class-names": "^1.2.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-0",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.2",
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "less": "^3.9.0",
+    "parcel-bundler": "^1.12.3"
+  }
+}
