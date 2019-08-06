@@ -10,6 +10,7 @@ export default function Root() {
   return (
     <div>
       <LocalStorageProvider localStorageKey="timezone-coworking-tool">
+        <h1>Timezone coworking cool</h1>
         <TimezoneList />
         <AddTimezone />
         <Settings />
