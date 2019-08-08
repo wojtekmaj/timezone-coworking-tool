@@ -63,8 +63,10 @@ export default function Timezone({
           tzCode={tzCode}
         />
       </div>
-      {bars.map(([timeStart, timeEnd]) => (
+      {bars.map(([timeStart, timeEnd], barIndex) => (
         <TimezoneBar
+          // eslint-disable-next-line react/no-array-index-key
+          key={`${tzCode}_${barIndex}`}
           index={index}
           timeStart={timeStart}
           timeEnd={timeEnd}

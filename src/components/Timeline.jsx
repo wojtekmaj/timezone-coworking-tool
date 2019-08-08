@@ -13,6 +13,7 @@ export default function Timeline() {
 
         return (
           <div
+            key={hour}
             className="Timeline__hour"
             style={{
               gridColumnStart: hour + 1,
