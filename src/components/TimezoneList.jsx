@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { minimalTimezoneSet as timezones } from 'compact-timezone-list';
+import timezones from 'compact-timezone-list';
 
 import './TimezoneList.less';
 
