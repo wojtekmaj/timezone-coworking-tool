@@ -5,6 +5,7 @@ import { utcToZonedTime } from 'date-fns-tz';
 
 import './Timezone.less';
 
+import TimezoneOptions from './TimezoneOptions';
 import TimezoneBar from './TimezoneBar';
 
 import { LocalStorageContext } from '../LocalStorageProvider';
@@ -45,17 +46,23 @@ export default function Timezone({
 
   return (
     <div className={mergeClassNames('Timezone', isCurrent && 'Timezone--current')}>
-      <h3
-        className="Timezone__label"
+      <div
+        className="Timezone__header"
         style={{
           gridRowStart: (index * 2),
           gridRowEnd: (index * 2),
         }}
       >
-        {displayLabel}
-        {' '}
-        <span className="Timezone__label__time">{localDate.toLocaleTimeString(undefined, { hour: 'numeric', minute: 'numeric' })}</span>
-      </h3>
+        <h3 className="Timezone__label">
+          {displayLabel}
+          {' '}
+          <span className="Timezone__label__time">{localDate.toLocaleTimeString(undefined, { hour: 'numeric', minute: 'numeric' })}</span>
+        </h3>
+        <TimezoneOptions
+          displayLabel={displayLabel}
+          tzCode={tzCode}
+        />
+      </div>
       {bars.map(([timeStart, timeEnd]) => (
         <TimezoneBar
           index={index}

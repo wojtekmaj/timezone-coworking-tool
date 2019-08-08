@@ -1,20 +1,41 @@
 .Timezone {
   display: contents;
 
+  &:hover {
+    .Timezone__options {
+      display: block;
+    }
+  }
+
   &--current {
     .Timezone__bar {
       background: rgba(128, 128, 128, 0.8);
     }
   }
 
-  &__label {
+  &__header {
+    display: flex;
+    padding: .8em .4em;
     grid-column-start: 1;
     grid-column-end: 25;
-    margin: 0.748em;
+  }
+
+  &__label {
+    margin: 0 .4em;
+    line-height: 24px;
 
     &__time {
       font-size: 12px;
       font-weight: normal;
+    }
+  }
+
+  &__options {
+    display: none;
+
+    button {
+      height: 24px;
+      margin: 0 .4em;
     }
   }
 
