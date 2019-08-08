@@ -5,23 +5,11 @@ import { utcToZonedTime } from 'date-fns-tz';
 
 import './Timezone.less';
 
+import TimezoneBar from './TimezoneBar';
+
 import { LocalStorageContext } from '../LocalStorageProvider';
 
 import useTick from '../hooks/useTick';
-
-function TimezoneBar({ index, timeStart, timeEnd }) {
-  return (
-    <div
-      className="Timezone__bar"
-      style={{
-        gridRowStart: (index * 2) + 1,
-        gridRowEnd: (index * 2) + 1,
-        gridColumnStart: timeStart + 1,
-        gridColumnEnd: timeEnd + 1,
-      }}
-    />
-  );
-}
 
 export default function Timezone({
   index,
