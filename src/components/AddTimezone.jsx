@@ -1,7 +1,10 @@
 import React, { useContext, useState } from 'react';
 
-import { LocalStorageContext } from '../LocalStorageProvider';
 import TimezoneSelect from './TimezoneSelect';
+
+import { LocalStorageContext } from '../LocalStorageProvider';
+
+import { uniq } from '../utils';
 
 export default function AddTimezone() {
   const [localStorage, setLocalStorage] = useContext(LocalStorageContext);
@@ -24,7 +27,7 @@ export default function AddTimezone() {
 
   function onSubmit(event) {
     event.preventDefault();
-    const nextTimezones = Array.from(new Set([...currentTimezones, selectedTimezone])).filter(Boolean);
+    const nextTimezones = uniq([...currentTimezones, selectedTimezone]).filter(Boolean);
     const nextLocalStorage = {
       timezones: nextTimezones,
     };
