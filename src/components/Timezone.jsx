@@ -57,6 +57,7 @@ export default function Timezone({
         }}
       >
         <h3 className="Timezone__label">
+          {isCurrent ? '🏠 ' : ''}
           {displayLabel}
           {' '}
           <span className="Timezone__label__time">{localDate.toLocaleTimeString(undefined, { hour: 'numeric', minute: 'numeric' })}</span>
