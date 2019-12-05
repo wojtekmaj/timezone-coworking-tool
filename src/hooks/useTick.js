@@ -9,7 +9,7 @@ import useSetInterval from './useSetInterval';
 export default function useTick(delay) {
   const [tick, setTick] = useState(0);
   const doTick = useCallback(() => {
-    setTick(prevSeconds => prevSeconds + 1);
+    setTick((prevSeconds) => prevSeconds + 1);
   }, []);
 
   useSetInterval(doTick, delay);

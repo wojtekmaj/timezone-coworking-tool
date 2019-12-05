@@ -9,6 +9,7 @@
   "rules": {
     "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/label-has-for": ["error", { "required": { "some": ["id", "nesting"] }}],
+    "react/jsx-props-no-spreading": "off",
     "react/require-default-props": "off"
   }
 }

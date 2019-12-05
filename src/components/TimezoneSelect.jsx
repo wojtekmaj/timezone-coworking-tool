@@ -18,7 +18,7 @@ export default function TimezoneSelect({
   }
 
   // Force checked if value comes from full timezone list
-  const isSelectedTimezone = timezone => timezone.tzCode === value;
+  const isSelectedTimezone = (timezone) => timezone.tzCode === value;
   const valueFromFullList = (
     !minimalTimezones.find(isSelectedTimezone)
     && timezones.find(isSelectedTimezone)
@@ -34,7 +34,7 @@ export default function TimezoneSelect({
         {...otherProps}
       >
         <option value="" hidden>{placeholder}</option>
-        {(shouldShowAll ? timezones : minimalTimezones).map(timezone => (
+        {(shouldShowAll ? timezones : minimalTimezones).map((timezone) => (
           <option key={timezone.tzCode} value={timezone.tzCode}>
             {timezone.label}
           </option>
