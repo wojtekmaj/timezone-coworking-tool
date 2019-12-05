@@ -44,6 +44,7 @@ export default function TimezoneOptions({ displayLabel, tzCode }) {
   return (
     <div className="Timezone__options">
       <button
+        className="Timezone__options__edit"
         type="button"
         title="Edit"
         onClick={onClickEdit}
@@ -51,6 +52,7 @@ export default function TimezoneOptions({ displayLabel, tzCode }) {
         <span role="img" aria-label="Edit">🖊️</span>
       </button>
       <button
+        className="Timezone__options__remove"
         type="button"
         title="Remove"
         onClick={onClickRemove}
