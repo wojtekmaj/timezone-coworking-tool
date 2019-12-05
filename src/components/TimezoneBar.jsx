@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function TimezoneBar({ index, timeStart, timeEnd }) {
+  const row = (index * 2) + 1;
   return (
     <div
       className="Timezone__bar"
       style={{
-        gridRowStart: (index * 2) + 1,
-        gridRowEnd: (index * 2) + 1,
+        gridRowStart: row,
+        gridRowEnd: row,
         gridColumnStart: timeStart + 1,
         gridColumnEnd: timeEnd + 1,
       }}

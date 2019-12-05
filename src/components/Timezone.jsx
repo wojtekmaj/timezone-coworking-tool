@@ -47,13 +47,15 @@ export default function Timezone({
     bars.push([0, initialTimeEnd - 24]);
   }
 
+  const row = index * 2;
+
   return (
     <div className={mergeClassNames('Timezone', isCurrent && 'Timezone--current')}>
       <div
         className="Timezone__header"
         style={{
-          gridRowStart: (index * 2),
-          gridRowEnd: (index * 2),
+          gridRowStart: row,
+          gridRowEnd: row,
         }}
       >
         <h3 className="Timezone__label">

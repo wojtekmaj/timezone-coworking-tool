@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import './Timezone.less';
 
-import { LocalStorageContext } from '../LocalStorageProvider';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 export default function TimezoneOptions({ displayLabel, tzCode }) {
-  const [localStorage, setLocalStorage] = useContext(LocalStorageContext);
+  const [localStorage, setLocalStorage] = useLocalStorage();
   const {
     nicknames: currentNicknames = {},
     timezones: currentTimezones = [],
