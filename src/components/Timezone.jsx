@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import mergeClassNames from 'merge-class-names';
 import { utcToZonedTime } from 'date-fns-tz';
@@ -8,9 +8,8 @@ import './Timezone.less';
 import TimezoneOptions from './TimezoneOptions';
 import TimezoneBar from './TimezoneBar';
 
-import { LocalStorageContext } from '../LocalStorageProvider';
-
 import useTick from '../hooks/useTick';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 export default function Timezone({
   index,
@@ -19,7 +18,7 @@ export default function Timezone({
   tzCode,
 }) {
   useTick(1000);
-  const [localStorage] = useContext(LocalStorageContext);
+  const [localStorage] = useLocalStorage();
   const { nicknames = {} } = localStorage;
 
   const displayLabel = (
