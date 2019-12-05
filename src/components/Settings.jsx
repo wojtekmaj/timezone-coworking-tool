@@ -37,14 +37,14 @@ export default function Settings() {
         id="workStart"
         onChange={makeOnChange('workStart')}
         value={workStart}
-        max={workEnd - 1}
+        max={Number(workEnd) - 1}
       />
       <label htmlFor="workEnd">Work end hour</label>
       <HourInput
         id="workEnd"
         onChange={makeOnChange('workEnd')}
         value={workEnd}
-        min={workStart + 1}
+        min={Number(workStart) + 1}
       />
     </div>
   );
