@@ -1,6 +1,7 @@
 import React from 'react';
 
 import TimezoneSelect from './TimezoneSelect';
+import HourInput from './HourInput';
 
 import { detectTimezone } from '../utils';
 
@@ -8,11 +9,17 @@ import useLocalStorage from '../hooks/useLocalStorage';
 
 export default function Settings() {
   const [localStorage, setLocalStorage] = useLocalStorage();
-  const { myTimezone = detectTimezone() } = localStorage;
+  const {
+    myTimezone = detectTimezone(),
+    workStart = 9,
+    workEnd = 17,
+  } = localStorage;
 
-  function onChange(event) {
-    const { value } = event.target;
-    setLocalStorage({ myTimezone: value });
+  function makeOnChange(key) {
+    return function onChange(event) {
+      const { value } = event.target;
+      setLocalStorage({ [key]: value });
+    };
   }
 
   return (
@@ -20,10 +27,24 @@ export default function Settings() {
       <h2>Settings</h2>
       <label htmlFor="myTimezone">Select your timezone</label>
       <TimezoneSelect
-        onChange={onChange}
-        value={myTimezone}
         id="myTimezone"
+        onChange={makeOnChange('myTimezone')}
         placeholder="Select your timezone"
+        value={myTimezone}
+      />
+      <label htmlFor="workStart">Work start hour</label>
+      <HourInput
+        id="workStart"
+        onChange={makeOnChange('workStart')}
+        value={workStart}
+        max={workEnd - 1}
+      />
+      <label htmlFor="workEnd">Work end hour</label>
+      <HourInput
+        id="workEnd"
+        onChange={makeOnChange('workEnd')}
+        value={workEnd}
+        min={workStart + 1}
       />
     </div>
   );

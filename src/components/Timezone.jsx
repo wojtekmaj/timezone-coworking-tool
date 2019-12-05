@@ -19,7 +19,11 @@ export default function Timezone({
 }) {
   useTick(1000);
   const [localStorage] = useLocalStorage();
-  const { nicknames = {} } = localStorage;
+  const {
+    nicknames = {},
+    workStart = 9,
+    workEnd = 17,
+  } = localStorage;
 
   const displayLabel = (
     nicknames[tzCode]
@@ -29,8 +33,8 @@ export default function Timezone({
   const localDate = utcToZonedTime(date, tzCode);
   const timeDifference = Math.round((localDate - date) / 3600000);
 
-  const initialTimeStart = 9 - timeDifference;
-  const initialTimeEnd = 17 - timeDifference;
+  const initialTimeStart = workStart - timeDifference;
+  const initialTimeEnd = workEnd - timeDifference;
 
   const bars = [[initialTimeStart, initialTimeEnd]];
 
