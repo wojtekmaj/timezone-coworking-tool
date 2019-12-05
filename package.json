@@ -6,9 +6,9 @@
   "scripts": {
     "build": "yarn clean && parcel build src/index.html --public-url ./ --cache-dir ./.cache/prod",
     "clean": "rimraf dist",
-    "test": "yarn run test-eslint",
-    "test-eslint": "eslint src/ --ext .jsx,.js",
-    "start": "parcel src/index.html --cache-dir ./.cache/dev"
+    "lint": "eslint src/ --ext .jsx,.js",
+    "start": "parcel src/index.html --cache-dir ./.cache/dev",
+    "test": "yarn lint"
   },
   "author": {
     "name": "Wojciech Maj",
