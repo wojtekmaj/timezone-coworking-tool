@@ -16,6 +16,11 @@ export default function TimezoneOptions({ displayLabel, tzCode }) {
     // eslint-disable-next-line no-alert
     const nickname = prompt('Enter new nickname', displayLabel);
 
+    // User clicked "Cancel"
+    if (nickname === null) {
+      return;
+    }
+
     const nextNicknames = { ...currentNicknames };
     nextNicknames[tzCode] = nickname;
 
