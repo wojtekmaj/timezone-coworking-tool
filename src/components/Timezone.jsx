@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTick } from '@wojtekmaj/react-hooks';
 import mergeClassNames from 'merge-class-names';
 import { utcToZonedTime } from 'date-fns-tz';
 
@@ -8,7 +9,6 @@ import './Timezone.less';
 import TimezoneOptions from './TimezoneOptions';
 import TimezoneBar from './TimezoneBar';
 
-import useTick from '../hooks/useTick';
 import useLocalStorage from '../hooks/useLocalStorage';
 
 export default function Timezone({

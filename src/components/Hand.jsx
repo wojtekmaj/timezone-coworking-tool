@@ -1,8 +1,7 @@
 import React from 'react';
+import { useTick } from '@wojtekmaj/react-hooks';
 
 import './Hand.less';
-
-import useTick from '../hooks/useTick';
 
 export default function Hand() {
   useTick(1000);

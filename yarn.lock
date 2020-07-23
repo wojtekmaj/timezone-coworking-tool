@@ -1682,6 +1682,11 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
   integrity sha512-ce5d3q03Ex0sy4R14722Rmt6MT07Ua+k4FwDfdcToYJcMKNtRVQvJ6JCAPdAmAnbRb6CsX6aYb9m96NGod9uTw==
 
+"@wojtekmaj/react-hooks@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@wojtekmaj/react-hooks/-/react-hooks-1.1.0.tgz#978051f3aaf05eeb53406c6adf8a725ad2a1c865"
+  integrity sha512-veB5z8yrAvoA7fb7YYY3am4tZwj3JBf/AYjANLoS7Fsl9Vfh7nYEOGBc9VGa7xKc+4fG1NFm0ZSww28SLOxsKg==
+
 abab@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.3.tgz#623e2075e02eb2d3f2475e49f99c91846467907a"
