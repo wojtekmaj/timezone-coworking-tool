@@ -1,19 +1,9 @@
 {
   "presets": [
-    [
-      "@babel/env",
-      {
-        "modules": false,
-        "loose": true,
-        "targets": {
-          "browsers": [
-            "Edge >= 16",
-            "Chrome >= 61",
-            "Firefox >= 60"
-          ]
-        }
-      }
-    ],
-    "@babel/react"
+    ["@babel/preset-env", {
+      "modules": false,
+      "loose": true
+    }],
+    "@babel/preset-react"
   ]
 }
