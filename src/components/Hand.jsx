@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTick } from '@wojtekmaj/react-hooks';
 
 import './Hand.less';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import TimezoneSelect from './TimezoneSelect';
 import HourInput from './HourInput';
 

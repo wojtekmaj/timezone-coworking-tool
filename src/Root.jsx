@@ -1,5 +1,3 @@
-import React from 'react';
-
 import AddTimezone from './components/AddTimezone';
 import TimezoneList from './components/TimezoneList';
 

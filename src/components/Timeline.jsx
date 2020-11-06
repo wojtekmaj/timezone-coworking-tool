@@ -1,5 +1,3 @@
-import React from 'react';
-
 import './Timeline.less';
 
 export default function Timeline() {

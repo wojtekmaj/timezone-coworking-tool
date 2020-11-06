@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import timezones from 'compact-timezone-list';
 
 import './TimezoneList.less';
