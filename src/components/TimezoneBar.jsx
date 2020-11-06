@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function TimezoneBar({ index, timeStart, timeEnd }) {
+export default function TimezoneBar({ index, timeEnd, timeStart }) {
   const row = (index * 2) + 1;
   return (
     <div
@@ -18,6 +18,6 @@ export default function TimezoneBar({ index, timeStart, timeEnd }) {
 
 TimezoneBar.propTypes = {
   index: PropTypes.number.isRequired,
-  timeStart: PropTypes.number.isRequired,
   timeEnd: PropTypes.number.isRequired,
+  timeStart: PropTypes.number.isRequired,
 };
