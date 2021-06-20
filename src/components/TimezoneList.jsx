@@ -1,5 +1,5 @@
-import { useContext } from 'react';
 import timezones from 'compact-timezone-list';
+import { useLocalStorage } from '@wojtekmaj/react-hooks';
 
 import './TimezoneList.less';
 
@@ -7,13 +7,11 @@ import Timeline from './Timeline';
 import Hand from './Hand';
 import Timezone from './Timezone';
 
-import { LocalStorageContext } from '../LocalStorageProvider';
-
 import { detectTimezone, uniq } from '../utils';
 
 export default function TimezoneList() {
-  const [localStorage] = useContext(LocalStorageContext);
-  const { myTimezone = detectTimezone(), timezones: currentTimezones = [] } = localStorage;
+  const [myTimezone] = useLocalStorage('myTimezone', detectTimezone());
+  const [currentTimezones] = useLocalStorage('timezones', []);
 
   const tzToDisplay = uniq([myTimezone, ...currentTimezones]).map(
     (tzCode) => timezones.find((tz) => tz.tzCode === tzCode),

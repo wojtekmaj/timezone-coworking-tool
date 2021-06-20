@@ -1,15 +1,11 @@
 import PropTypes from 'prop-types';
+import { useLocalStorage } from '@wojtekmaj/react-hooks';
 
 import './Timezone.less';
 
-import useLocalStorage from '../hooks/useLocalStorage';
-
 export default function TimezoneOptions({ displayLabel, tzCode }) {
-  const [localStorage, setLocalStorage] = useLocalStorage();
-  const {
-    nicknames: currentNicknames = {},
-    timezones: currentTimezones = [],
-  } = localStorage;
+  const [currentNicknames, setCurrentNicknames] = useLocalStorage('nicknames', {});
+  const [currentTimezones, setCurrentTimezones] = useLocalStorage('timezones', []);
 
   function onClickEdit() {
     // eslint-disable-next-line no-alert
@@ -22,27 +18,17 @@ export default function TimezoneOptions({ displayLabel, tzCode }) {
 
     const nextNicknames = { ...currentNicknames };
     nextNicknames[tzCode] = nickname;
-
-    const nextLocalStorage = {
-      nicknames: nextNicknames,
-    };
-
-    setLocalStorage(nextLocalStorage);
+    setCurrentNicknames(nextNicknames);
   }
 
   function onClickRemove() {
     const nextTimezones = [...currentTimezones];
     nextTimezones.splice(nextTimezones.indexOf(tzCode), 1);
+    setCurrentTimezones(nextTimezones);
 
     const nextNicknames = { ...currentNicknames };
     delete nextNicknames[tzCode];
-
-    const nextLocalStorage = {
-      nicknames: nextNicknames,
-      timezones: nextTimezones,
-    };
-
-    setLocalStorage(nextLocalStorage);
+    setCurrentNicknames(nextNicknames);
   }
 
   return (

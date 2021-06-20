@@ -1,19 +1,15 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
+import { useLocalStorage } from '@wojtekmaj/react-hooks';
 
 import TimezoneSelect from './TimezoneSelect';
-
-import { LocalStorageContext } from '../LocalStorageProvider';
 
 import { uniq } from '../utils';
 
 export default function AddTimezone() {
-  const [localStorage, setLocalStorage] = useContext(LocalStorageContext);
+  const [currentNicknames, setCurrentNicknames] = useLocalStorage('nicknames', {});
+  const [currentTimezones, setCurrentTimezones] = useLocalStorage('timezones', []);
   const [selectedTimezone, setSelectedTimezone] = useState('');
   const [nickname, setNickname] = useState('');
-  const {
-    nicknames: currentNicknames = {},
-    timezones: currentTimezones = [],
-  } = localStorage;
 
   function onChange(event) {
     const { value } = event.target;
@@ -28,13 +24,10 @@ export default function AddTimezone() {
   function onSubmit(event) {
     event.preventDefault();
     const nextTimezones = uniq([...currentTimezones, selectedTimezone]).filter(Boolean);
-    const nextLocalStorage = {
-      timezones: nextTimezones,
-    };
+    setCurrentTimezones(nextTimezones);
     if (nickname) {
-      nextLocalStorage.nicknames = { ...currentNicknames, [selectedTimezone]: nickname };
+      setCurrentNicknames({ ...currentNicknames, [selectedTimezone]: nickname });
     }
-    setLocalStorage(nextLocalStorage);
     setSelectedTimezone('');
     setNickname('');
   }

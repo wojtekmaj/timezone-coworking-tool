@@ -1587,12 +1587,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wojtekmaj/react-hooks@npm:^1.1.0":
-  version: 1.6.0
-  resolution: "@wojtekmaj/react-hooks@npm:1.6.0"
+"@wojtekmaj/react-hooks@npm:^1.11.0":
+  version: 1.11.0
+  resolution: "@wojtekmaj/react-hooks@npm:1.11.0"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-0
-  checksum: a5cf20aae2bf66a2a7e8cdf3bb066e7ef46f8bc8f49abc6cc58fac53c1d7bd179d38d9e026c8a4028f699b16731ca3339bfa3be7cb0cdf4dfc46a6cfba69a88d
+  checksum: b7a110541c3d88007591ff64fb7c319d7c673fffa842f941582a9fa16c4645d6dd0308825f614e2668a583a4d7e3f9f8fedc5d2fe2257763317cccaf7b129498
   languageName: node
   linkType: hard
 
@@ -7576,7 +7576,7 @@ fsevents@^1.2.7:
     "@babel/preset-env": ^7.9.0
     "@babel/preset-react": ^7.9.0
     "@pmmmwh/react-refresh-webpack-plugin": ^0.4.1
-    "@wojtekmaj/react-hooks": ^1.1.0
+    "@wojtekmaj/react-hooks": ^1.11.0
     babel-loader: ^8.1.0
     compact-timezone-list: ^1.0.0
     css-loader: ^5.0.0

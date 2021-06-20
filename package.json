@@ -15,7 +15,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@wojtekmaj/react-hooks": "^1.1.0",
+    "@wojtekmaj/react-hooks": "^1.11.0",
     "compact-timezone-list": "^1.0.0",
     "date-fns": "^2.0.0",
     "date-fns-tz": "^1.0.0",
