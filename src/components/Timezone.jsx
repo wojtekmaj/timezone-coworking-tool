@@ -10,24 +10,12 @@ import TimezoneBar from './TimezoneBar';
 
 import useLocalStorage from '../hooks/useLocalStorage';
 
-export default function Timezone({
-  index,
-  isCurrent,
-  label,
-  tzCode,
-}) {
+export default function Timezone({ index, isCurrent, label, tzCode }) {
   useTick(1000);
   const [localStorage] = useLocalStorage();
-  const {
-    nicknames = {},
-    workStart = 9,
-    workEnd = 17,
-  } = localStorage;
+  const { nicknames = {}, workStart = 9, workEnd = 17 } = localStorage;
 
-  const displayLabel = (
-    nicknames[tzCode]
-    || (label.split(')')[1] || label).trim()
-  );
+  const displayLabel = nicknames[tzCode] || (label.split(')')[1] || label).trim();
   const date = new Date();
   const localDate = utcToZonedTime(date, tzCode);
   const timeDifference = Math.round((localDate - date) / 3600000);
@@ -59,14 +47,12 @@ export default function Timezone({
       >
         <h3 className="Timezone__label">
           {isCurrent ? '🏠 ' : ''}
-          {displayLabel}
-          {' '}
-          <span className="Timezone__label__time">{localDate.toLocaleTimeString(undefined, { hour: 'numeric', minute: 'numeric' })}</span>
+          {displayLabel}{' '}
+          <span className="Timezone__label__time">
+            {localDate.toLocaleTimeString(undefined, { hour: 'numeric', minute: 'numeric' })}
+          </span>
         </h3>
-        <TimezoneOptions
-          displayLabel={displayLabel}
-          tzCode={tzCode}
-        />
+        <TimezoneOptions displayLabel={displayLabel} tzCode={tzCode} />
       </div>
       {bars.map(([timeStart, timeEnd], barIndex) => (
         <TimezoneBar

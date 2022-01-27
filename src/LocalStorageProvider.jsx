@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 export const LocalStorageContext = createContext({});
 
 export default function LocalStorageProvider({ children, localStorageKey }) {
-  const [localStorageObj, setLocalStorageObj] = useState(JSON.parse(localStorage[localStorageKey] || '{}'));
+  const [localStorageObj, setLocalStorageObj] = useState(
+    JSON.parse(localStorage[localStorageKey] || '{}'),
+  );
 
   function saveLocalStorage() {
     localStorage[localStorageKey] = JSON.stringify(localStorageObj);

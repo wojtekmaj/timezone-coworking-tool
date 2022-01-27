@@ -7,11 +7,7 @@ import useLocalStorage from '../hooks/useLocalStorage';
 
 export default function Settings() {
   const [localStorage, setLocalStorage] = useLocalStorage();
-  const {
-    myTimezone = detectTimezone(),
-    workStart = 9,
-    workEnd = 17,
-  } = localStorage;
+  const { myTimezone = detectTimezone(), workStart = 9, workEnd = 17 } = localStorage;
 
   function makeOnChange(key) {
     return function onChange(event) {

@@ -4,13 +4,7 @@ import timezones, { minimalTimezoneSet as minimalTimezones } from 'compact-timez
 
 import './TimezoneSelect.less';
 
-export default function TimezoneSelect({
-  id,
-  onChange,
-  placeholder,
-  value,
-  ...otherProps
-}) {
+export default function TimezoneSelect({ id, onChange, placeholder, value, ...otherProps }) {
   const [checked, setChecked] = useState(false);
 
   function onChangeChecked(event) {
@@ -19,21 +13,16 @@ export default function TimezoneSelect({
 
   // Force checked if value comes from full timezone list
   const isSelectedTimezone = (timezone) => timezone.tzCode === value;
-  const valueFromFullList = (
-    !minimalTimezones.find(isSelectedTimezone)
-    && timezones.find(isSelectedTimezone)
-  );
+  const valueFromFullList =
+    !minimalTimezones.find(isSelectedTimezone) && timezones.find(isSelectedTimezone);
   const shouldShowAll = checked || valueFromFullList;
 
   return (
     <div className="TimezoneSelect">
-      <select
-        id={id}
-        onChange={onChange}
-        value={value}
-        {...otherProps}
-      >
-        <option value="" hidden>{placeholder}</option>
+      <select id={id} onChange={onChange} value={value} {...otherProps}>
+        <option value="" hidden>
+          {placeholder}
+        </option>
         {(shouldShowAll ? timezones : minimalTimezones).map((timezone) => (
           <option key={timezone.tzCode} value={timezone.tzCode}>
             {timezone.label}

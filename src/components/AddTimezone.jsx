@@ -10,10 +10,7 @@ export default function AddTimezone() {
   const [localStorage, setLocalStorage] = useContext(LocalStorageContext);
   const [selectedTimezone, setSelectedTimezone] = useState('');
   const [nickname, setNickname] = useState('');
-  const {
-    nicknames: currentNicknames = {},
-    timezones: currentTimezones = [],
-  } = localStorage;
+  const { nicknames: currentNicknames = {}, timezones: currentTimezones = [] } = localStorage;
 
   function onChange(event) {
     const { value } = event.target;
@@ -52,16 +49,9 @@ export default function AddTimezone() {
           required
         />
         <label htmlFor="nickname">Add nickname (optional)</label>
-        <input
-          type="text"
-          id="nickname"
-          onChange={onChangeNickname}
-          value={nickname}
-        />
+        <input type="text" id="nickname" onChange={onChangeNickname} value={nickname} />
         <div>
-          <button type="submit">
-            Add timezone
-          </button>
+          <button type="submit">Add timezone</button>
         </div>
       </form>
     </div>

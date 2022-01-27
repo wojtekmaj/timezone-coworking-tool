@@ -6,10 +6,7 @@ import useLocalStorage from '../hooks/useLocalStorage';
 
 export default function TimezoneOptions({ displayLabel, tzCode }) {
   const [localStorage, setLocalStorage] = useLocalStorage();
-  const {
-    nicknames: currentNicknames = {},
-    timezones: currentTimezones = [],
-  } = localStorage;
+  const { nicknames: currentNicknames = {}, timezones: currentTimezones = [] } = localStorage;
 
   function onClickEdit() {
     // eslint-disable-next-line no-alert
@@ -47,13 +44,10 @@ export default function TimezoneOptions({ displayLabel, tzCode }) {
 
   return (
     <div className="Timezone__options">
-      <button
-        className="Timezone__options__edit"
-        type="button"
-        title="Edit"
-        onClick={onClickEdit}
-      >
-        <span role="img" aria-label="Edit">🖊️</span>
+      <button className="Timezone__options__edit" type="button" title="Edit" onClick={onClickEdit}>
+        <span role="img" aria-label="Edit">
+          🖊️
+        </span>
       </button>
       <button
         className="Timezone__options__remove"
@@ -61,7 +55,9 @@ export default function TimezoneOptions({ displayLabel, tzCode }) {
         title="Remove"
         onClick={onClickRemove}
       >
-        <span role="img" aria-label="Remove">🗑️️</span>
+        <span role="img" aria-label="Remove">
+          🗑️️
+        </span>
       </button>
     </div>
   );
