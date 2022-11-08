@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useTick } from '@wojtekmaj/react-hooks';
-import mergeClassNames from 'merge-class-names';
+import clsx from 'clsx';
 import { utcToZonedTime } from 'date-fns-tz';
 
 import './Timezone.less';
@@ -37,7 +37,7 @@ export default function Timezone({ index, isCurrent, label, tzCode }) {
   const row = index * 2;
 
   return (
-    <div className={mergeClassNames('Timezone', isCurrent && 'Timezone--current')}>
+    <div className={clsx('Timezone', isCurrent && 'Timezone--current')}>
       <div
         className="Timezone__header"
         style={{
