@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import './Timezone.less';
+import styles from './Timezone.module.css';
 
 import useLocalStorage from '../hooks/useLocalStorage';
 
@@ -43,18 +43,13 @@ export default function TimezoneOptions({ displayLabel, tzCode }) {
   }
 
   return (
-    <div className="Timezone__options">
-      <button className="Timezone__options__edit" type="button" title="Edit" onClick={onClickEdit}>
+    <div className={styles.options}>
+      <button className={styles.edit} type="button" title="Edit" onClick={onClickEdit}>
         <span role="img" aria-label="Edit">
           🖊️
         </span>
       </button>
-      <button
-        className="Timezone__options__remove"
-        type="button"
-        title="Remove"
-        onClick={onClickRemove}
-      >
+      <button className={styles.remove} type="button" title="Remove" onClick={onClickRemove}>
         <span role="img" aria-label="Remove">
           🗑️️
         </span>

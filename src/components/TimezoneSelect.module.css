@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+  margin: 0.4em -0.4em;
+}
+
+.wrapper > * {
+  margin: 0 0.4em;
+}
+
+.wrapper input {
+  margin-top: 3px;
+}

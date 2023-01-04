@@ -1,0 +1,39 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(60, 1fr);
+  grid-row-start: 1;
+  grid-row-end: -1;
+}
+
+.hand {
+  width: 2px;
+  margin: 16px -1px 0;
+  position: relative;
+  background-color: #ee462f;
+  z-index: 1;
+}
+
+.hand::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  position: absolute;
+  top: 3px;
+  left: -2px;
+  background-color: #ee462f;
+  border: 1px solid white;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.time {
+  position: absolute;
+  top: -5px;
+  padding: 0 8px;
+  background: white;
+  background: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+  border-radius: 10px;
+  transform: translate(-50%, -100%);
+  font-size: 11px;
+  color: #ee462f;
+}

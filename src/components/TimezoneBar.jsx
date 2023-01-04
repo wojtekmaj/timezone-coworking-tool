@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 
+import styles from './Timezone.module.css';
+
 export default function TimezoneBar({ index, timeEnd, timeStart }) {
   const row = index * 2 + 1;
   return (
     <div
-      className="Timezone__bar"
+      className={styles.bar}
       style={{
         gridRowStart: row,
         gridRowEnd: row,

@@ -1,0 +1,47 @@
+.wrapper {
+  display: contents;
+}
+
+.wrapper:hover .options {
+  display: block;
+}
+
+.current .bar {
+  background: rgba(128, 128, 128, 0.8);
+}
+
+.current .remove {
+  display: none;
+}
+
+.header {
+  display: flex;
+  padding: 0.8em 0.4em;
+  grid-column-start: 1;
+  grid-column-end: 25;
+}
+
+.label {
+  margin: 0 0.4em;
+  line-height: 24px;
+}
+
+.label .time {
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.options {
+  display: none;
+}
+
+.options button {
+  height: 24px;
+  margin: 0 0.4em;
+}
+
+.bar {
+  min-height: 42px;
+  background: rgba(128, 128, 128, 0.4);
+  border-radius: 5px;
+}
