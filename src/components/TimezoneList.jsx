@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import timezones from 'compact-timezone-list';
 
-import styles from './TimezoneList.module.css';
+import { wrapper, content } from './TimezoneList.module.css';
 
 import Timeline from './Timeline';
 import Hand from './Hand';
@@ -21,10 +21,10 @@ export default function TimezoneList() {
   tzToDisplay.sort((a, b) => parseInt(a.offset, 10) - parseInt(b.offset, 10));
 
   return (
-    <div className={styles.wrapper}>
+    <div className={wrapper}>
       <h2>Timezones</h2>
       <div
-        className={styles.content}
+        className={content}
         style={{ gridTemplateRows: `30px repeat(${tzToDisplay.length * 2}, 1fr) 30px` }}
       >
         <Timeline />

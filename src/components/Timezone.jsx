@@ -3,7 +3,7 @@ import { useTick } from '@wojtekmaj/react-hooks';
 import clsx from 'clsx';
 import { utcToZonedTime } from 'date-fns-tz';
 
-import styles from './Timezone.module.css';
+import { wrapper, current, header, label as labelClassName, time } from './Timezone.module.css';
 
 import TimezoneOptions from './TimezoneOptions';
 import TimezoneBar from './TimezoneBar';
@@ -37,18 +37,18 @@ export default function Timezone({ index, isCurrent, label, tzCode }) {
   const row = index * 2;
 
   return (
-    <div className={clsx(styles.wrapper, isCurrent && styles.current)}>
+    <div className={clsx(wrapper, isCurrent && current)}>
       <div
-        className={styles.header}
+        className={header}
         style={{
           gridRowStart: row,
           gridRowEnd: row,
         }}
       >
-        <h3 className={styles.label}>
+        <h3 className={labelClassName}>
           {isCurrent ? '🏠 ' : ''}
           {displayLabel}{' '}
-          <span className={styles.time}>
+          <span className={time}>
             {localDate.toLocaleTimeString(undefined, { hour: 'numeric', minute: 'numeric' })}
           </span>
         </h3>

@@ -40,6 +40,12 @@
   margin: 0 0.4em;
 }
 
+.edit {
+}
+
+.remove {
+}
+
 .bar {
   min-height: 42px;
   background: rgba(128, 128, 128, 0.4);

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 
-import styles from './HourInput.module.css';
+import { input } from './HourInput.module.css';
 
 export default function HourInput(props) {
-  return <input className={styles.input} max={24} min={0} type="number" {...props} />;
+  return <input className={input} max={24} min={0} type="number" {...props} />;
 }
 
 HourInput.propTypes = {

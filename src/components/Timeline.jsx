@@ -1,10 +1,10 @@
-import styles from './Timeline.module.css';
+import { wrapper, hour as hourClassName, hand, time } from './Timeline.module.css';
 
 export default function Timeline() {
   const hours = new Array(24).fill().map((el, idx) => idx);
 
   return (
-    <div className={styles.wrapper}>
+    <div className={wrapper}>
       {hours.map((hour) => {
         const date = new Date();
         date.setHours(hour, 0, 0, 0);
@@ -12,20 +12,20 @@ export default function Timeline() {
         return (
           <div
             key={hour}
-            className={styles.hour}
+            className={hourClassName}
             style={{
               gridColumnStart: hour + 1,
               gridColumnEnd: hour + 1,
             }}
           >
             <div
-              className={styles.hand}
+              className={hand}
               style={{
                 gridColumnStart: 1,
                 gridColumnEnd: 1,
               }}
             >
-              <div className={styles.time}>
+              <div className={time}>
                 {date.toLocaleTimeString(undefined, { hour: 'numeric', minute: 'numeric' })}
               </div>
             </div>

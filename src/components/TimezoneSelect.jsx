@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import timezones, { minimalTimezoneSet as minimalTimezones } from 'compact-timezone-list';
 
-import styles from './TimezoneSelect.module.css';
+import { wrapper } from './TimezoneSelect.module.css';
 
 export default function TimezoneSelect({ id, onChange, placeholder, value, ...otherProps }) {
   const [checked, setChecked] = useState(false);
@@ -18,7 +18,7 @@ export default function TimezoneSelect({ id, onChange, placeholder, value, ...ot
   const shouldShowAll = checked || valueFromFullList;
 
   return (
-    <div className={styles.wrapper}>
+    <div className={wrapper}>
       <select id={id} onChange={onChange} value={value} {...otherProps}>
         <option value="" hidden>
           {placeholder}
