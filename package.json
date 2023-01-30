@@ -19,7 +19,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@wojtekmaj/react-hooks": "^1.13.0",
+    "@wojtekmaj/react-hooks": "^1.16.1",
     "clsx": "^1.2.1",
     "compact-timezone-list": "^1.0.0",
     "date-fns": "^2.0.0",
