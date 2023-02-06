@@ -632,6 +632,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/prop-types@npm:*":
+  version: 15.7.5
+  resolution: "@types/prop-types@npm:15.7.5"
+  checksum: 5b43b8b15415e1f298243165f1d44390403bb2bd42e662bca3b5b5633fdd39c938e91b7fce3a9483699db0f7a715d08cef220c121f723a634972fdf596aec980
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:*":
+  version: 18.0.27
+  resolution: "@types/react@npm:18.0.27"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: 600fdbc39a92ea4a77047db3e12f05f67776a710f5918248c0189a59ac2a38900c9db5a5d2e433a16df528a3ecab1aa114b322cacea573bb1ca2fc0b094c52d1
+  languageName: node
+  linkType: hard
+
+"@types/scheduler@npm:*":
+  version: 0.16.2
+  resolution: "@types/scheduler@npm:0.16.2"
+  checksum: b6b4dcfeae6deba2e06a70941860fb1435730576d3689225a421280b7742318d1548b3d22c1f66ab68e414f346a9542f29240bc955b6332c5b11e561077583bc
+  languageName: node
+  linkType: hard
+
 "@vitejs/plugin-react@npm:^3.0.0":
   version: 3.0.0
   resolution: "@vitejs/plugin-react@npm:3.0.0"
@@ -647,12 +672,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wojtekmaj/react-hooks@npm:^1.13.0":
-  version: 1.14.1
-  resolution: "@wojtekmaj/react-hooks@npm:1.14.1"
+"@wojtekmaj/react-hooks@npm:^1.16.2":
+  version: 1.16.2
+  resolution: "@wojtekmaj/react-hooks@npm:1.16.2"
+  dependencies:
+    "@types/react": "*"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 9838a47401a7391838b1f6f16794c112ce75e5ba7f46e107629131fe9166d391c08e5e10a5f41f5eb1903925299f403ae0609448940eb857e31e7fc6116627bf
+  checksum: 1bba0de69e012c2c9ce5c56f01cc994a69b440e14646e93751b713c8fe2c237a627355b71dd3f8de4a745eef4c1dfcd47f89901485aa7f46856e0097941c0fb1
   languageName: node
   linkType: hard
 
@@ -1204,6 +1231,13 @@ __metadata:
   version: 6.1.0
   resolution: "css-what@npm:6.1.0"
   checksum: b975e547e1e90b79625918f84e67db5d33d896e6de846c9b584094e529f0c63e2ab85ee33b9daffd05bff3a146a1916bec664e18bb76dd5f66cbff9fc13b2bbe
+  languageName: node
+  linkType: hard
+
+"csstype@npm:^3.0.2":
+  version: 3.1.1
+  resolution: "csstype@npm:3.1.1"
+  checksum: 1f7b4f5fdd955b7444b18ebdddf3f5c699159f13e9cf8ac9027ae4a60ae226aef9bbb14a6e12ca7dba3358b007cee6354b116e720262867c398de6c955ea451d
   languageName: node
   linkType: hard
 
@@ -3922,7 +3956,7 @@ __metadata:
   resolution: "timezone-coworking-tool@workspace:."
   dependencies:
     "@vitejs/plugin-react": ^3.0.0
-    "@wojtekmaj/react-hooks": ^1.13.0
+    "@wojtekmaj/react-hooks": ^1.16.2
     clsx: ^1.2.1
     compact-timezone-list: ^1.0.0
     date-fns: ^2.0.0
