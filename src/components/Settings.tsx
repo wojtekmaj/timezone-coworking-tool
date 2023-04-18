@@ -1,19 +1,34 @@
+import { useLocalStorage } from '@wojtekmaj/react-hooks';
+
 import TimezoneSelect from './TimezoneSelect';
 import HourInput from './HourInput';
 
-import { detectTimezone } from '../utils';
-
-import useLocalStorage from '../hooks/useLocalStorage';
+import { detectTimezone, triggerStorageEvent } from '../utils';
 
 export default function Settings() {
-  const [localStorage, setLocalStorage] = useLocalStorage();
-  const { myTimezone = detectTimezone(), workStart = 9, workEnd = 17 } = localStorage;
+  const [myTimezone, setMyTimezone] = useLocalStorage('myTimezone', detectTimezone());
+  const [workStart, setWorkStart] = useLocalStorage('workStart', 9);
+  const [workEnd, setWorkEnd] = useLocalStorage('workEnd', 17);
 
-  function makeOnChange(key: string) {
-    return function onChange(event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
-      const { value } = event.target;
-      setLocalStorage({ [key]: value });
-    };
+  function onChangeMyTimezone(event: React.ChangeEvent<HTMLSelectElement>) {
+    const { value } = event.target;
+
+    setMyTimezone(value);
+    triggerStorageEvent('myTimezone', value);
+  }
+
+  function onChangeWorkStart(event: React.ChangeEvent<HTMLInputElement>) {
+    const { value, valueAsNumber } = event.target;
+
+    setWorkStart(valueAsNumber);
+    triggerStorageEvent('workStart', value);
+  }
+
+  function onChangeWorkEnd(event: React.ChangeEvent<HTMLInputElement>) {
+    const { value, valueAsNumber } = event.target;
+
+    setWorkEnd(valueAsNumber);
+    triggerStorageEvent('workEnd', value);
   }
 
   return (
@@ -22,21 +37,21 @@ export default function Settings() {
       <label htmlFor="myTimezone">Select your timezone</label>
       <TimezoneSelect
         id="myTimezone"
-        onChange={makeOnChange('myTimezone')}
+        onChange={onChangeMyTimezone}
         placeholder="Select your timezone"
         value={myTimezone}
       />
       <label htmlFor="workStart">Work start hour</label>
       <HourInput
         id="workStart"
-        onChange={makeOnChange('workStart')}
+        onChange={onChangeWorkStart}
         value={workStart}
         max={Number(workEnd) - 1}
       />
       <label htmlFor="workEnd">Work end hour</label>
       <HourInput
         id="workEnd"
-        onChange={makeOnChange('workEnd')}
+        onChange={onChangeWorkEnd}
         value={workEnd}
         min={Number(workStart) + 1}
       />

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useTick } from '@wojtekmaj/react-hooks';
+import { useLocalStorage, useTick } from '@wojtekmaj/react-hooks';
 import clsx from 'clsx';
 import { utcToZonedTime } from 'date-fns-tz';
 
@@ -7,8 +7,6 @@ import { wrapper, current, header, label as labelClassName, time } from './Timez
 
 import TimezoneOptions from './TimezoneOptions';
 import TimezoneBar from './TimezoneBar';
-
-import useLocalStorage from '../hooks/useLocalStorage';
 
 type TimezoneProps = {
   index: number;
@@ -19,8 +17,9 @@ type TimezoneProps = {
 
 export default function Timezone({ index, isCurrent, label, tzCode }: TimezoneProps) {
   useTick(1000);
-  const [localStorage] = useLocalStorage();
-  const { nicknames = {}, workStart = 9, workEnd = 17 } = localStorage;
+  const [nicknames] = useLocalStorage<Record<string, string>>('nicknames', {});
+  const [workStart] = useLocalStorage('workStart', 9);
+  const [workEnd] = useLocalStorage('workEnd', 17);
 
   const displayLabel = nicknames[tzCode] || (label.split(')')[1] || label).trim();
   const date = new Date();

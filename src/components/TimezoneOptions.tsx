@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
+import { useLocalStorage } from '@wojtekmaj/react-hooks';
 
 import { options, edit, remove } from './Timezone.module.css';
-
-import useLocalStorage from '../hooks/useLocalStorage';
+import { triggerStorageEvent } from '../utils';
 
 type TimezoneOptionsProps = {
   displayLabel: string;
@@ -10,8 +10,11 @@ type TimezoneOptionsProps = {
 };
 
 export default function TimezoneOptions({ displayLabel, tzCode }: TimezoneOptionsProps) {
-  const [localStorage, setLocalStorage] = useLocalStorage();
-  const { nicknames: currentNicknames = {}, timezones: currentTimezones = [] } = localStorage;
+  const [currentNicknames, setCurrentNicknames] = useLocalStorage<Record<string, string>>(
+    'nicknames',
+    {},
+  );
+  const [currentTimezones, setCurrentTimezones] = useLocalStorage<string[]>('timezones', []);
 
   function onClickEdit() {
     // eslint-disable-next-line no-alert
@@ -25,11 +28,8 @@ export default function TimezoneOptions({ displayLabel, tzCode }: TimezoneOption
     const nextNicknames = { ...currentNicknames };
     nextNicknames[tzCode] = nickname;
 
-    const nextLocalStorage = {
-      nicknames: nextNicknames,
-    };
-
-    setLocalStorage(nextLocalStorage);
+    setCurrentNicknames(nextNicknames);
+    triggerStorageEvent('nicknames', nextNicknames);
   }
 
   function onClickRemove() {
@@ -39,12 +39,11 @@ export default function TimezoneOptions({ displayLabel, tzCode }: TimezoneOption
     const nextNicknames = { ...currentNicknames };
     delete nextNicknames[tzCode];
 
-    const nextLocalStorage = {
-      nicknames: nextNicknames,
-      timezones: nextTimezones,
-    };
+    setCurrentNicknames(nextNicknames);
+    triggerStorageEvent('nicknames', nextNicknames);
 
-    setLocalStorage(nextLocalStorage);
+    setCurrentTimezones(nextTimezones);
+    triggerStorageEvent('timezones', nextTimezones);
   }
 
   return (

@@ -1,12 +1,11 @@
 import timezones from 'compact-timezone-list';
+import { useLocalStorage } from '@wojtekmaj/react-hooks';
 
 import { wrapper, content } from './TimezoneList.module.css';
 
 import Timeline from './Timeline';
 import Hand from './Hand';
 import Timezone from './Timezone';
-
-import useLocalStorage from '../hooks/useLocalStorage';
 
 import { detectTimezone, uniq } from '../utils';
 
@@ -17,8 +16,10 @@ function filterBoolean<T>(value: T): value is NonFalsy<typeof value> {
 }
 
 export default function TimezoneList() {
-  const [localStorage] = useLocalStorage();
-  const { myTimezone = detectTimezone(), timezones: currentTimezones = [] } = localStorage;
+  const [myTimezone] = useLocalStorage('myTimezone', detectTimezone());
+  const [currentTimezones] = useLocalStorage<string[]>('timezones', []);
+
+  console.log({ myTimezone, currentTimezones });
 
   const tzToDisplay = uniq([myTimezone, ...currentTimezones])
     .map((tzCode) => timezones.find((tz) => tz.tzCode === tzCode))

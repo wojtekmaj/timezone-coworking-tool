@@ -15,3 +15,13 @@ export function detectTimezone(): string {
 export function uniq<T>(arr: T[]): T[] {
   return Array.from(new Set(arr));
 }
+
+export function triggerStorageEvent(key: string, newValue: unknown) {
+  window.dispatchEvent(
+    new StorageEvent('storage', {
+      key,
+      newValue: JSON.stringify(newValue),
+      storageArea: window.localStorage,
+    }),
+  );
+}

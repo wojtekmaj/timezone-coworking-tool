@@ -1,39 +1,41 @@
 import { useState } from 'react';
+import { useLocalStorage } from '@wojtekmaj/react-hooks';
 
 import TimezoneSelect from './TimezoneSelect';
 
-import useLocalStorage from '../hooks/useLocalStorage';
-
-import { uniq } from '../utils';
-
-import type { LocalStorageObject } from '../LocalStorageProvider';
+import { triggerStorageEvent, uniq } from '../utils';
 
 export default function AddTimezone() {
-  const [localStorage, setLocalStorage] = useLocalStorage();
+  const [currentNicknames, setCurrentNicknames] = useLocalStorage('nicknames', {});
+  const [currentTimezones, setCurrentTimezones] = useLocalStorage<string[]>('timezones', []);
   const [selectedTimezone, setSelectedTimezone] = useState('');
   const [nickname, setNickname] = useState('');
-  const { nicknames: currentNicknames = {}, timezones: currentTimezones = [] } = localStorage;
 
   function onChange(event: React.ChangeEvent<HTMLSelectElement>) {
     const { value } = event.target;
+
     setSelectedTimezone(value);
   }
 
   function onChangeNickname(event: React.ChangeEvent<HTMLInputElement>) {
     const { value } = event.target;
+
     setNickname(value);
   }
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
     const nextTimezones = uniq([...currentTimezones, selectedTimezone]).filter(Boolean);
-    const nextLocalStorage: LocalStorageObject = {
-      timezones: nextTimezones,
-    };
+    setCurrentTimezones(nextTimezones);
+    triggerStorageEvent('timezones', nextTimezones);
+
     if (nickname) {
-      nextLocalStorage.nicknames = { ...currentNicknames, [selectedTimezone]: nickname };
+      const nextNicknames = { ...currentNicknames, [selectedTimezone]: nickname };
+      setCurrentNicknames(nextNicknames);
+      triggerStorageEvent('nicknames', nextNicknames);
     }
-    setLocalStorage(nextLocalStorage);
+
     setSelectedTimezone('');
     setNickname('');
   }
