@@ -9,8 +9,8 @@ export default function Settings() {
   const [localStorage, setLocalStorage] = useLocalStorage();
   const { myTimezone = detectTimezone(), workStart = 9, workEnd = 17 } = localStorage;
 
-  function makeOnChange(key) {
-    return function onChange(event) {
+  function makeOnChange(key: string) {
+    return function onChange(event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
       const { value } = event.target;
       setLocalStorage({ [key]: value });
     };

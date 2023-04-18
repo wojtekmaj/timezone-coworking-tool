@@ -4,18 +4,34 @@ import timezones, { minimalTimezoneSet as minimalTimezones } from 'compact-timez
 
 import { wrapper } from './TimezoneSelect.module.css';
 
-export default function TimezoneSelect({ id, onChange, placeholder, value, ...otherProps }) {
+import type { Timezone } from 'compact-timezone-list';
+
+type TimezoneSelectProps = {
+  id: string;
+  onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  placeholder?: string;
+  value?: string;
+} & React.SelectHTMLAttributes<HTMLSelectElement>;
+
+export default function TimezoneSelect({
+  id,
+  onChange,
+  placeholder,
+  value,
+  ...otherProps
+}: TimezoneSelectProps) {
   const [checked, setChecked] = useState(false);
 
-  function onChangeChecked(event) {
+  function onChangeChecked(event: React.ChangeEvent<HTMLInputElement>) {
     setChecked(event.target.checked);
   }
 
   // Force checked if value comes from full timezone list
-  const isSelectedTimezone = (timezone) => timezone.tzCode === value;
-  const valueFromFullList =
-    !minimalTimezones.find(isSelectedTimezone) && timezones.find(isSelectedTimezone);
-  const shouldShowAll = checked || valueFromFullList;
+  const isSelectedTimezone = (timezone: Timezone) => timezone.tzCode === value;
+  const hasValueFromFullList = Boolean(
+    !minimalTimezones.find(isSelectedTimezone) && timezones.find(isSelectedTimezone),
+  );
+  const shouldShowAll = checked || hasValueFromFullList;
 
   return (
     <div className={wrapper}>
@@ -34,7 +50,7 @@ export default function TimezoneSelect({ id, onChange, placeholder, value, ...ot
         id={`${id}_show_all`}
         checked={shouldShowAll}
         onChange={onChangeChecked}
-        disabled={valueFromFullList}
+        disabled={hasValueFromFullList}
       />
       <label htmlFor={`${id}_show_all`}>Show all</label>
     </div>

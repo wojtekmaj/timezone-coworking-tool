@@ -10,7 +10,14 @@ import TimezoneBar from './TimezoneBar';
 
 import useLocalStorage from '../hooks/useLocalStorage';
 
-export default function Timezone({ index, isCurrent, label, tzCode }) {
+type TimezoneProps = {
+  index: number;
+  isCurrent?: boolean;
+  label: string;
+  tzCode: string;
+};
+
+export default function Timezone({ index, isCurrent, label, tzCode }: TimezoneProps) {
   useTick(1000);
   const [localStorage] = useLocalStorage();
   const { nicknames = {}, workStart = 9, workEnd = 17 } = localStorage;
@@ -18,16 +25,20 @@ export default function Timezone({ index, isCurrent, label, tzCode }) {
   const displayLabel = nicknames[tzCode] || (label.split(')')[1] || label).trim();
   const date = new Date();
   const localDate = utcToZonedTime(date, tzCode);
-  const timeDifference = Math.round((localDate - date) / 3600000);
+  const timeDifference = Math.round((localDate.getTime() - date.getTime()) / 3600000);
 
   const initialTimeStart = workStart - timeDifference;
   const initialTimeEnd = workEnd - timeDifference;
 
-  const bars = [[initialTimeStart, initialTimeEnd]];
+  const bars: [number, number][] = [[initialTimeStart, initialTimeEnd]];
 
   // If bar goes through midnight, we need to actually display two separate bars
   if (initialTimeStart < 0) {
-    bars[0][0] = 0;
+    const firstBar = bars[0];
+    if (!firstBar) {
+      throw new Error('Expected first bar to exist');
+    }
+    firstBar[0] = 0;
     bars.push([24 + initialTimeStart, 24]);
   }
   if (initialTimeEnd > 24) {
