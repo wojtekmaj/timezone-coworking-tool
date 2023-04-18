@@ -1,7 +1,7 @@
 import { wrapper, hour as hourClassName, hand, time } from './Timeline.module.css';
 
 export default function Timeline() {
-  const hours = new Array(24).fill().map((el, idx) => idx);
+  const hours = Array.from({ length: 24 }).map((el, idx) => idx);
 
   return (
     <div className={wrapper}>

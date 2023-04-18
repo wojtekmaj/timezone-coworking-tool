@@ -4,7 +4,12 @@ import { options, edit, remove } from './Timezone.module.css';
 
 import useLocalStorage from '../hooks/useLocalStorage';
 
-export default function TimezoneOptions({ displayLabel, tzCode }) {
+type TimezoneOptionsProps = {
+  displayLabel: string;
+  tzCode: string;
+};
+
+export default function TimezoneOptions({ displayLabel, tzCode }: TimezoneOptionsProps) {
   const [localStorage, setLocalStorage] = useLocalStorage();
   const { nicknames: currentNicknames = {}, timezones: currentTimezones = [] } = localStorage;
 

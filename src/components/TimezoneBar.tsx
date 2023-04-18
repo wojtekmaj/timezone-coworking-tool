@@ -2,7 +2,13 @@ import PropTypes from 'prop-types';
 
 import { bar } from './Timezone.module.css';
 
-export default function TimezoneBar({ index, timeEnd, timeStart }) {
+type TimezoneBarProps = {
+  index: number;
+  timeEnd: number;
+  timeStart: number;
+};
+
+export default function TimezoneBar({ index, timeEnd, timeStart }: TimezoneBarProps) {
   const row = index * 2 + 1;
   return (
     <div

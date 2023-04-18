@@ -1,9 +1,26 @@
 import { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-export const LocalStorageContext = createContext({});
+export type LocalStorageObject = Record<string, any>;
 
-export default function LocalStorageProvider({ children, localStorageKey }) {
+export const LocalStorageContext = createContext<
+  [LocalStorageObject, (obj: LocalStorageObject) => void]
+>([
+  {},
+  () => {
+    // Intentionally empty
+  },
+]);
+
+type LocalStorageProviderProps = {
+  children?: React.ReactNode;
+  localStorageKey: string;
+};
+
+export default function LocalStorageProvider({
+  children,
+  localStorageKey,
+}: LocalStorageProviderProps) {
   const [localStorageObj, setLocalStorageObj] = useState(
     JSON.parse(localStorage[localStorageKey] || '{}'),
   );
@@ -12,9 +29,9 @@ export default function LocalStorageProvider({ children, localStorageKey }) {
     localStorage[localStorageKey] = JSON.stringify(localStorageObj);
   }
 
-  useEffect(saveLocalStorage, [localStorageObj]);
+  useEffect(saveLocalStorage, [localStorageKey, localStorageObj]);
 
-  function set(amend) {
+  function set(amend: LocalStorageObject) {
     const nextLocalStorageObj = {
       ...localStorageObj,
       ...amend,
