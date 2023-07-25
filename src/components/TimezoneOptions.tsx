@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useLocalStorage } from '@wojtekmaj/react-hooks';
 
 import { options, edit, remove } from './Timezone.module.css';
@@ -61,8 +60,3 @@ export default function TimezoneOptions({ displayLabel, tzCode }: TimezoneOption
     </div>
   );
 }
-
-TimezoneOptions.propTypes = {
-  displayLabel: PropTypes.string.isRequired,
-  tzCode: PropTypes.string.isRequired,
-};

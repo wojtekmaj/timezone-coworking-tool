@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 import { bar } from './Timezone.module.css';
 
 type TimezoneBarProps = {
@@ -22,9 +20,3 @@ export default function TimezoneBar({ index, timeEnd, timeStart }: TimezoneBarPr
     />
   );
 }
-
-TimezoneBar.propTypes = {
-  index: PropTypes.number.isRequired,
-  timeEnd: PropTypes.number.isRequired,
-  timeStart: PropTypes.number.isRequired,
-};

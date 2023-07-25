@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useLocalStorage, useTick } from '@wojtekmaj/react-hooks';
 import clsx from 'clsx';
 import { utcToZonedTime } from 'date-fns-tz';
@@ -76,10 +75,3 @@ export default function Timezone({ index, isCurrent, label, tzCode }: TimezonePr
     </div>
   );
 }
-
-Timezone.propTypes = {
-  index: PropTypes.number.isRequired,
-  isCurrent: PropTypes.bool,
-  label: PropTypes.string.isRequired,
-  tzCode: PropTypes.string,
-};

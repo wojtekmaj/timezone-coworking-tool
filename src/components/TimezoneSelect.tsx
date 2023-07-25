@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 import timezones, { minimalTimezoneSet as minimalTimezones } from 'compact-timezone-list';
 
 import { wrapper } from './TimezoneSelect.module.css';
@@ -56,10 +55,3 @@ export default function TimezoneSelect({
     </div>
   );
 }
-
-TimezoneSelect.propTypes = {
-  id: PropTypes.string.isRequired,
-  onChange: PropTypes.func,
-  placeholder: PropTypes.string,
-  value: PropTypes.string,
-};
