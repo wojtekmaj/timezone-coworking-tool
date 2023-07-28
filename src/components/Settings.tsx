@@ -1,9 +1,9 @@
 import { useLocalStorage } from '@wojtekmaj/react-hooks';
 
-import TimezoneSelect from './TimezoneSelect';
-import HourInput from './HourInput';
+import TimezoneSelect from './TimezoneSelect.js';
+import HourInput from './HourInput.js';
 
-import { detectTimezone, triggerStorageEvent } from '../utils';
+import { detectTimezone, triggerStorageEvent } from '../utils.js';
 
 export default function Settings() {
   const [myTimezone, setMyTimezone] = useLocalStorage('myTimezone', detectTimezone());

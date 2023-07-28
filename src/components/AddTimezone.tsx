@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useLocalStorage } from '@wojtekmaj/react-hooks';
 
-import TimezoneSelect from './TimezoneSelect';
+import TimezoneSelect from './TimezoneSelect.js';
 
-import { triggerStorageEvent, uniq } from '../utils';
+import { triggerStorageEvent, uniq } from '../utils.js';
 
 export default function AddTimezone() {
   const [currentNicknames, setCurrentNicknames] = useLocalStorage('nicknames', {});

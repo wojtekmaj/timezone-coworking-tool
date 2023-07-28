@@ -3,11 +3,11 @@ import { useLocalStorage } from '@wojtekmaj/react-hooks';
 
 import { wrapper, content } from './TimezoneList.module.css';
 
-import Timeline from './Timeline';
-import Hand from './Hand';
-import Timezone from './Timezone';
+import Timeline from './Timeline.js';
+import Hand from './Hand.js';
+import Timezone from './Timezone.js';
 
-import { detectTimezone, uniq } from '../utils';
+import { detectTimezone, uniq } from '../utils.js';
 
 type NonFalsy<T> = T extends false | 0 | '' | null | undefined | 0n ? never : T;
 

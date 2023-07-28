@@ -1,7 +1,7 @@
 import { useLocalStorage } from '@wojtekmaj/react-hooks';
 
 import { options, edit, remove } from './Timezone.module.css';
-import { triggerStorageEvent } from '../utils';
+import { triggerStorageEvent } from '../utils.js';
 
 type TimezoneOptionsProps = {
   displayLabel: string;

@@ -1,7 +1,7 @@
-import AddTimezone from './components/AddTimezone';
-import TimezoneList from './components/TimezoneList';
+import AddTimezone from './components/AddTimezone.js';
+import TimezoneList from './components/TimezoneList.js';
 
-import Settings from './components/Settings';
+import Settings from './components/Settings.js';
 
 export default function Root() {
   return (

@@ -4,8 +4,8 @@ import { utcToZonedTime } from 'date-fns-tz';
 
 import { wrapper, current, header, label as labelClassName, time } from './Timezone.module.css';
 
-import TimezoneOptions from './TimezoneOptions';
-import TimezoneBar from './TimezoneBar';
+import TimezoneOptions from './TimezoneOptions.js';
+import TimezoneBar from './TimezoneBar.js';
 
 type TimezoneProps = {
   index: number;
